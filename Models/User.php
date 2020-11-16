@@ -17,6 +17,7 @@ class User{
         $stm = $pdo->prepare("Select `id`,`name`,`email` from user");
         $stm->execute();
         $users = $stm->fetchAll(\PDO::FETCH_ASSOC);
+        $stm->closeCursor();
         return $users;
     }
 
@@ -47,6 +48,7 @@ class User{
         array_push($arr,$request->id);
         $stm = $pdo->prepare($query);
         $stm->execute($arr);
+        $stm->closeCursor();
         return self::find($request->id);
     }
 
@@ -54,7 +56,7 @@ class User{
         $pdo = \DB::connect();
         $stm = $pdo->prepare("Delete from user where id=?");
         $stm->execute([$request->id]);
-        //$stm->closeCursor();
+        $stm->closeCursor();
         return $stm->rowCount();
 
     }

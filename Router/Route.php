@@ -1,12 +1,14 @@
 <?php
 namespace Router;
 require_once 'Controllers/UserController.php';
+require_once 'Controllers/BookController.php';
 require_once 'Request.php';
 require_once 'Middlewares/IsPalmeira.php';
 require_once 'Handler.php';
 require_once "Middlewares/CORS.php";
 
 use Controllers\UserController;
+use Controllers\BookController;
 
 class Route{
     private static $get_routes = [];
