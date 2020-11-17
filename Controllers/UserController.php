@@ -44,9 +44,28 @@ class UserController{
         $user = User::create($request);
         //header("Content-type: application/json");
         $headers = ["Accept" => "application/json"];
-        response($user,201,$headers)->send();
-        
+        response($user,201,$headers)->send();  
     }
-    
+
+    static public function login(Request $request){
+        $headers = ["Accept" => "application/json"];
+
+        if(User::login($request->email, $request->password)){
+            $user = User::getLoggedInUser();
+            response($user,201,$headers)->send();
+        }
+
+    }
+
+    static public function logout(){
+        $headers = ["Accept" => "application/json"];
+        if(User::logout()){
+            response('Deslogado', 200, $headers)->send();
+        }
+        else{
+            response('Nenhuma sessão ativa', 200, $headers)->send();
+        }
+
+    }
   
 } 

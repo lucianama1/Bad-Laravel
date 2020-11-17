@@ -3,7 +3,7 @@ CREATE OR REPLACE TABLE user (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     `name` varchar(100) NOT NULL,
     `email` varchar(100) UNIQUE NOT NULL,
-    `password` varchar(100) NOT NULL
+    `password` varchar(255) NOT NULL    /*aumentado pra 255 pra não dar problema com o hash*/
 
 ) ENGINE=InnoDB;
 

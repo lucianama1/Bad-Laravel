@@ -8,6 +8,9 @@ Route::post("/upuser","Controllers\UserController@update");
 Route::post("/cuser","Controllers\UserController@create");
 Route::post("/duser","Controllers\UserController@delete");
 
+Route::post("/login","Controllers\UserController@login");
+Route::post("/logout","Controllers\UserController@logout");
+
 Route::get("/book","Controllers\BookController@index");
 Route::get("/showbook","Controllers\BookController@show");
 Route::post("/upbook","Controllers\BookController@update");
